@@ -144,4 +144,8 @@ class NotesNotifier extends StateNotifier<List<Note>> {
     }
     return null;
   }
+
+  void deleteNote(int noteId) {
+    _removeFromDB(noteId);
+  }
 }

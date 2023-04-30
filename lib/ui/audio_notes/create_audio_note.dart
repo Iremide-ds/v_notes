@@ -40,6 +40,7 @@ class _CreateAudioNoteState extends ConsumerState<CreateAudioNote> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // TODO: show duration
             ElevatedButton.icon(
               onPressed: () async {
                 await _audioRecorder!.toggleRecording();

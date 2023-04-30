@@ -46,6 +46,7 @@ dependencies:
   path: ^1.8.3
   intl: ^0.18.1
   flutter_sound_lite: ^8.5.0
+  json_theme: ^5.0.2+5
 
 dev_dependencies:
   flutter_test:
@@ -70,8 +71,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/
+    - assets/appainter_theme.json
+    - assets/appainter_theme_dark.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
