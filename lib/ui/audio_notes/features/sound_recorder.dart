@@ -101,4 +101,8 @@ class SoundRecorder {
       await _stopRecording();
     }
   }
+
+  Stream<RecordingDisposition>? getDuration() {
+    return _soundRecorder!.onProgress;
+  }
 }
