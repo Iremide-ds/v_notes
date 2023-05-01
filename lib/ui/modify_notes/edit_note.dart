@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:v_notes/constants.dart';
 import 'package:v_notes/data/models/note_model.dart';
 
@@ -22,7 +23,7 @@ class _EditNoteState extends State<EditNote> {
 
   Note? currentNote;
 
-  void _saveNote() async {
+  Future<void> _saveNote() async {
     final notifier = ProviderScope.containerOf(context, listen: false)
         .read(notesProvider.notifier);
 
@@ -56,7 +57,18 @@ class _EditNoteState extends State<EditNote> {
 
     return Scaffold(
         appBar: AppBar(actions: [
-          TextButton(onPressed: () => _saveNote(), child: const Text('save'))
+          TextButton(
+            onPressed: () {
+              _saveNote().then((_) {
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Saved!'),
+                  ));
+                }
+              });
+            },
+            child: const Text('Save'),
+          ),
         ]),
         body: SizedBox(
           height: size.height,
@@ -66,9 +78,34 @@ class _EditNoteState extends State<EditNote> {
               children: [
                 TextFormField(
                   controller: _titleController,
+                  decoration: InputDecoration(
+                      prefixStyle: Theme.of(context).textTheme.labelMedium,
+                      prefixText: 'Title: ',
+                      hintText: 'No Title',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none),
                 ),
-                TextFormField(
-                  controller: _contentController,
+                SizedBox(
+                  height: 0.05.sh,
+                  width: 1.sw,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Content',
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: SizedBox(
+                    child: TextFormField(
+                      controller: _contentController,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                      ),
+                      maxLines: null,
+                    ),
+                  ),
                 ),
               ],
             ),
