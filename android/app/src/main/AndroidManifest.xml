@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="Manifest.permission.CAPTURE_AUDIO_OUTPUT" />
     <application
-        android:label="v_notes"
+        android:label="V Notes"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
