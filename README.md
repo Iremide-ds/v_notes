@@ -26,7 +26,7 @@ A Flutter note taking app that allows users to take notes and also record audio.
 Download or clone this repo by using the link below:
 
 ```
-https://github.com/zubairehman/flutter-boilerplate-project.git
+https://github.com/iremide-ds/v_notes.git
 ```
 
 **Step 2:**
